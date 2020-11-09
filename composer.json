@@ -1,0 +1,21 @@
+{
+  "name": "shirtcharity/chairman",
+  "description": "Chairman (shirt.charity Charity Manager Shopware Plugin)",
+  "type": "shopware-platform-plugin",
+  "license": "EUPL-1.2",
+  "autoload": {
+    "psr-4": {
+      "ShirtCharity\\Chairman\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "ShirtCharity\\Chairman\\Chairman",
+    "label": {
+      "de-DE": "Chairman (shirt.charity Charity Manager)",
+      "en-GB": "Chairman (shirt.charity Charity Manager)"
+    }
+  },
+  "scripts": {
+    "ecs": "../../../dev-ops/analyze/vendor/bin/ecs --config ../../../platform/easy-coding-standard.yml check ./src/"
+  }
+}
