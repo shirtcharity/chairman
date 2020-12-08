@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="ShirtCharity\Chairman\Core\Content\Charity\CharityDefinition">
+            <tag name="shopware.entity.definition" entity="shirtcharity_charity"/>
+        </service>
+        <service id="ShirtCharity\Chairman\Core\Content\Product\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+        <service id="ShirtCharity\Chairman\Core\Content\Charity\Aggregate\CharityTranslation\CharityTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="shirtcharity_charity_translation"/>
+        </service>
+        <service id="ShirtCharity\Chairman\Core\Content\Charity\Aggregate\CharityProduct\CharityProductDefinition">
+            <tag name="shopware.entity.definition" entity="shirtcharity_charity_product"/>
+        </service>
+    </services>
+</container>
