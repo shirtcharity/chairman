@@ -16,6 +16,7 @@
     }
   },
   "scripts": {
-    "ecs": "../../../dev-ops/analyze/vendor/bin/ecs --config ../../../platform/easy-coding-standard.yml check ./src/"
+    "ecs": "../../../dev-ops/analyze/vendor/bin/ecs --config ../../../platform/easy-coding-standard.yml check ./src/",
+    "eslint": "../../../vendor/shopware/platform/src/Administration/Resources/app/administration/node_modules/.bin/eslint --config ../../../vendor/shopware/platform/src/Administration/Resources/app/administration/.eslintrc.js --ext .js,.vue ./src/"
   }
 }
