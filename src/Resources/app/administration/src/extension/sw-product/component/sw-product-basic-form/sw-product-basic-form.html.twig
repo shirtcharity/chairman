@@ -1,0 +1,26 @@
+{% block sw_product_basic_form_description_field %}
+    {% parent() %}
+    <sw-inherit-wrapper
+        v-model="product.extensions.charities"
+        :inheritedValue="parentProduct.extensions ? parentProduct.extensions.charities : null"
+        :hasParent="!!parentProduct.id"
+        :label="$tc('sw-product.basicForm.labelCharity')"
+        isAssociation
+        @inheritance-remove="saveProduct"
+        @inheritance-restore="saveProduct"
+    >
+        <template #content="{ currentValue, updateCurrentValue, isInherited }">
+            <sw-entity-many-to-many-select
+                :localMode="product.isNew()"
+                :entityCollection="limitValues(currentValue)"
+                :disabled="isInherited"
+                :key="isInherited"
+                :placeholder="$tc('sw-product.basicForm.placeholderCharity')"
+                @change="updateCurrentValue(limitValues($event))"
+                labelProperty="name"
+                class="sw-select-product__select_charity"
+            >
+            </sw-entity-many-to-many-select>
+        </template>
+    </sw-inherit-wrapper>
+{% endblock %}

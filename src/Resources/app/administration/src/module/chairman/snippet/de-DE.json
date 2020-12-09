@@ -1,0 +1,56 @@
+{
+    "global": {
+        "entities": {
+            "shirtcharity_charity": "Charity | Charities"
+        }
+    },
+    "sw-product": {
+        "basicForm": {
+            "labelCharity": "Charity",
+            "placeholderCharity": "Gib eine Charity ein ..."
+        },
+        "list": {
+            "columnCharity": "Charity"
+        }
+    },
+    "shirtcharity-chairman": {
+        "general": {
+            "mainMenuItem": "Charities",
+            "description": "Hier kannst du Charities verwalten",
+            "placeholderSearchBar": "Durchsuche alle Charities ..."
+        },
+        "list": {
+            "title": "Charities",
+            "buttons": {
+                "add": "Charity hinzufügen"
+            },
+            "columns": {
+                "name": "Name",
+                "link": "Webseite"
+            }
+        },
+        "detail": {
+            "createTitle": "Neue Charity",
+            "cards": {
+                "charityInfo": "Charity-Informationen",
+                "customFields": "Zusatzfelder"
+            },
+            "buttons": {
+                "save": "Speichern",
+                "cancel": "Abbrechen",
+                "useAsLogo": "Als Logo wählen"
+            },
+            "fields": {
+                "name": "Name",
+                "link": "Webseite",
+                "logo": "Logo",
+                "description": "Beschreibung"
+            },
+            "placeholders": {
+                "name": "Gib den Namen der Charity ein ...",
+                "link": "Gib die URL der Charity-Website ein ...",
+                "description": "Gib die Beschreibung der Charity ein ..."
+            }
+        }
+    }
+}

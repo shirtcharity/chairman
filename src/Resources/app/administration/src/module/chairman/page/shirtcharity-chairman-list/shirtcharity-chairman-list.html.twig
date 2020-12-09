@@ -1,0 +1,77 @@
+{% block shirtcharity_chairman_list %}
+    <sw-page class="shirtcharity-chairman-list">
+        {% block shirtcharity_chairman_list_search_bar %}
+            <template #search-bar>
+                <sw-search-bar initialSearchType="shirtcharity_charity" :initialSearch="term" @search="onSearch">
+                </sw-search-bar>
+            </template>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_list_smart_bar_header %}
+            <template #smart-bar-header>
+                {% block shirtcharity_chairman_list_smart_bar_header_title %}
+                    <h2>
+                        {% block shirtcharity_chairman_list_smart_bar_header_title_text %}
+                            {{ $tc('shirtcharity-chairman.list.title') }}
+                        {% endblock %}
+
+                        {% block shirtcharity_chairman_list_smart_bar_header_amount %}
+                            <span v-if="!isLoading" class="sw-page__smart-bar-amount">
+                                ({{ total }})
+                            </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_list_actions %}
+            <template #smart-bar-actions>
+                {% block shirtcharity_chairman_list_smart_bar_actions %}
+                    <sw-button
+                        :routerLink="{ name: 'shirtcharity.chairman.create' }"
+                        class="shirtcharity-chairman-list__add-charity"
+                        variant="primary"
+                    >
+                        {{ $t('shirtcharity-chairman.list.buttons.add') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_list_language_switch %}
+            <template #language-switch>
+                <sw-language-switch @on-change="onChangeLanguage"></sw-language-switch>
+            </template>
+        {% endblock %}
+
+        <template #content>
+            {% block shirtcharity_chairman_list_content %}
+                <div class="shirtcharity-chairman-list__content">
+                    {% block shirtcharity_chairman_list_grid %}
+                        <sw-entity-listing
+                            :items="charities"
+                            :isLoading="!charities"
+                            :repository="charityRepository"
+                            :showSelection="false"
+                            :columns="charityColumns"
+                            @update-records="updateTotal"
+                            class="shirtcharity-chairman-list__grid"
+                            detailRoute="shirtcharity.chairman.detail"
+                        >
+                            {% block shirtcharity_chairman_list_grid_columns_name_preview %}
+                                <template #preview-name="{ item }">
+                                    <sw-media-preview-v2 :source="item.logoId"></sw-media-preview-v2>
+                                </template>
+                            {% endblock %}
+                        </sw-entity-listing>
+                    {% endblock %}
+
+                    {% block shirtcharity_chairman_list_grid_loader %}
+                        <sw-loader v-if="isLoading"></sw-loader>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

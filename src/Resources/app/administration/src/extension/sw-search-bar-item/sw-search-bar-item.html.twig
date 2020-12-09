@@ -1,0 +1,16 @@
+{% block sw_search_bar_item_cms_page %}
+    {% parent() %}
+    <router-link
+        v-else-if="type === 'shirtcharity_charity'"
+        v-bind:to="{ name: 'shirtcharity.chairman.detail', params: { id: item.id } }"
+        ref="routerLink"
+        class="sw-search-bar-item__link"
+    >
+        {% block sw_search_bar_item_shirtcharity_charity_label %}
+            <span class="sw-search-bar-item__label">
+                <sw-highlight-text v-bind:searchTerm="searchTerm" v-bind:text="item.name">
+                </sw-highlight-text>
+            </span>
+        {% endblock %}
+    </router-link>
+{% endblock %}

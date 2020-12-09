@@ -1,0 +1,166 @@
+{% block shirtcharity_chairman_detail %}
+    <sw-page class="shirtcharity-chairman-detail">
+
+        {% block shirtcharity_chairman_detail_header %}
+            <template #smart-bar-header>
+                <h2>{{ placeholder(charity, 'name', $tc('shirtcharity-chairman.detail.createTitle')) }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_detail_actions %}
+            <template #smart-bar-actions>
+
+                {% block shirtcharity_chairman_detail_actions_cancel %}
+                    <sw-button
+                        v-tooltip.bottom="tooltipCancel"
+                        @click="onCancel"
+                    >
+                        {{ $t('shirtcharity-chairman.detail.buttons.cancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block shirtcharity_chairman_detail_actions_save %}
+                    <sw-button-process
+                        v-model="isSaveSuccessful"
+                        v-tooltip.bottom="tooltipSave"
+                        :isLoading="isLoading"
+                        :disabled="isLoading"
+                        @click.prevent="onSave"
+                        variant="primary"
+                        class="shirtcharity-chairman-detail__save-action"
+                    >
+                        {{ $t('shirtcharity-chairman.detail.buttons.save') }}
+                    </sw-button-process>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_detail_language_switch %}
+            <template #language-switch>
+                <sw-language-switch
+                    :disabled="charityId == null"
+                    :saveChangesFunction="saveOnLanguageChange"
+                    :abortChangeFunction="abortOnLanguageChange"
+                    @on-change="onChangeLanguage">
+                </sw-language-switch>
+            </template>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_detail_content %}
+            <sw-card-view slot="content">
+
+                {% block shirtcharity_chairman_detail_content_language_info %}
+                    <sw-language-info
+                        :entityDescription="placeholder(charity, 'name', $tc('shirtcharity-chairman.detail.createTitle'))">
+                    </sw-language-info>
+                {% endblock %}
+
+                {% block shirtcharity_chairman_detail_base_info_card %}
+                    <sw-card
+                        :title="$tc('shirtcharity-chairman.detail.cards.charityInfo')"
+                        :isLoading="charityIsLoading"
+                    >
+                        <template v-if="!charityIsLoading">
+                            <sw-container
+                                class="shirtcharity-chairman-detail__container"
+                                columns="repeat(auto-fit, minmax(250px, 1fr))"
+                                gap="0 30px"
+                            >
+                                <div class="shirtcharity-chairman-detail__base-info-wrapper">
+
+                                    {% block shirtcharity_chairman_detail_base_info_field_name %}
+                                        <sw-field
+                                            v-model="charity.name"
+                                            :label="$tc('shirtcharity-chairman.detail.fields.name')"
+                                            :placeholder="placeholder(charity, 'name', $tc('shirtcharity-chairman.detail.placeholders.name'))"
+                                            :error="charityNameError"
+                                            type="text"
+                                            name="name"
+                                            validation="required"
+                                            required
+                                        >
+                                        </sw-field>
+                                    {% endblock %}
+
+                                    {% block shirtcharity_chairman_detail_base_info_field_link %}
+                                        <sw-field
+                                            v-model="charity.link"
+                                            :label="$tc('shirtcharity-chairman.detail.fields.link')"
+                                            :placeholder="$tc('shirtcharity-chairman.detail.placeholders.link')"
+                                            type="text"
+                                            name="link"
+                                        >
+                                        </sw-field>
+                                    {% endblock %}
+                                </div>
+
+                                {% block shirtcharity_chairman_detail_logo_upload %}
+                                    <sw-upload-listener
+                                        :uploadTag="logoUploadTag"
+                                        autoUpload
+                                        @media-upload-finish="setLogoItem"
+                                    >
+                                    </sw-upload-listener>
+                                    <sw-media-upload-v2
+                                        class="shirtcharity-chairman-detail__logo-upload"
+                                        :source="charity.logoId"
+                                        :allowMultiSelect="false"
+                                        variant="regular"
+                                        :uploadTag="logoUploadTag"
+                                        :label="$tc('shirtcharity-chairman.detail.fields.logo')"
+                                        :defaultFolder="charityRepository.entityName"
+                                        @sw-media-upload-v2-media-upload-success="setLogoItem"
+                                        @media-drop="onDropMedia"
+                                        @media-upload-sidebar-open="openMediaSidebar"
+                                        @media-upload-remove-image="onUnlinkLogo"
+                                    >
+                                    </sw-media-upload-v2>
+                                {% endblock %}
+                            </sw-container>
+
+                            {% block shirtcharity_chairman_detail_base_info_field_description %}
+                                <sw-text-editor
+                                    v-model="charity.description"
+                                    :label="$tc('shirtcharity-chairman.detail.fields.description')"
+                                    :placeholder="placeholder(charity, 'description', $tc('shirtcharity-chairman.detail.placeholders.description'))"
+                                    name="description"
+                                >
+                                </sw-text-editor>
+                            {% endblock %}
+                        </template>
+                    </sw-card>
+                {% endblock %}
+
+                {% block shirtcharity_chairman_detail_custom_field_sets %}
+                    <sw-card
+                        v-if="customFieldSets.length > 0"
+                        :title="$tc('shirtcharity-chairman.detail.cards.customFields')"
+                        :isLoading="charityIsLoading"
+                    >
+                        <sw-custom-field-set-renderer
+                            v-if="charity"
+                            :entity="charity"
+                            :sets="customFieldSets"
+                        >
+                        </sw-custom-field-set-renderer>
+                    </sw-card>
+                {% endblock %}
+            </sw-card-view>
+        {% endblock %}
+
+        {% block shirtcharity_chairman_detail_sidebar %}
+            <template slot="sidebar">
+                <sw-sidebar :propagateWidth="true">
+                    <sw-sidebar-media-item ref="mediaSidebarItem">
+                        <template slot="context-menu-items" slot-scope="media">
+                            <sw-context-menu-item @click="setLogoFromSidebar(media.mediaItem)">
+                                {{ $tc('shirtcharity-chairman.detail.buttons.useAsLogo') }}
+                            </sw-context-menu-item>
+                        </template>
+                    </sw-sidebar-media-item>
+                </sw-sidebar>
+            </template>
+        {% endblock %}
+
+    </sw-page>
+{% endblock %}

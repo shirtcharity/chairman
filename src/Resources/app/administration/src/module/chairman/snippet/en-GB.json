@@ -1,0 +1,56 @@
+{
+    "global": {
+        "entities": {
+            "shirtcharity_charity": "Charity | Charities"
+        }
+    },
+    "sw-product": {
+        "basicForm": {
+            "labelCharity": "Charity",
+            "placeholderCharity": "Enter charity..."
+        },
+        "list": {
+            "columnCharity": "Charity"
+        }
+    },
+    "shirtcharity-chairman": {
+        "general": {
+            "mainMenuItem": "Charities",
+            "description": "You can manage charities here",
+            "placeholderSearchBar": "Search charities..."
+        },
+        "list": {
+            "title": "Charities",
+            "buttons": {
+                "add": "Add Charity"
+            },
+            "columns": {
+                "name": "Name",
+                "link": "Web Page"
+            }
+        },
+        "detail": {
+            "createTitle": "New Charity",
+            "cards": {
+                "charityInfo": "Charity Information",
+                "customFields": "Custom Fields"
+            },
+            "buttons": {
+                "save": "Save",
+                "cancel": "Cancel",
+                "useAsLogo": "Use as Logo"
+            },
+            "fields": {
+                "name": "Name",
+                "link": "Web Page",
+                "logo": "Logo",
+                "description": "Description"
+            },
+            "placeholders": {
+                "name": "Enter charity name ...",
+                "link": "Enter charity URL ...",
+                "description": "Enter description ..."
+            }
+        }
+    }
+}
