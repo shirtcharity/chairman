@@ -3,6 +3,12 @@
   "description": "Chairman (shirt.charity Charity Manager Shopware Plugin)",
   "type": "shopware-platform-plugin",
   "license": "EUPL-1.2",
+  "authors": [
+    {
+      "name": "shirt.charity",
+      "homepage": "https://shirt.charity"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "ShirtCharity\\Chairman\\": "src/"
