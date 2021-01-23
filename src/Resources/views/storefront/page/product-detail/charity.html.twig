@@ -1,0 +1,33 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{% block utilities_offcanvas_content %}
+    {% block page_product_detail_charity_container %}
+        <div class="product-detail-charity tab-pane-container">
+            {% block page_product_detail_charity_content %}
+                {% block page_product_detail_charity_content_text %}
+                    <div class="product-detail-charity-text" itemprop="description">
+                        {{ charity.translated.description|raw }}
+                    </div>
+                {% endblock %}
+
+                {% block page_product_detail_charity_content_buttons %}
+                    <div class="product-detail-charity-buttons mt-3">
+                        {% if page.product.seoCategory %}
+                            <a
+                                href="{{ seoUrl('frontend.navigation.page', { navigationId: page.product.seoCategory.id }) }}"
+                                class="btn btn-primary mt-2 mr-2"
+                            >
+                                {{ 'shirtcharity.chairman.buttonShowAll'|trans({ '%charity%': charity.translated.name }) }}
+                            </a>
+                        {% endif %}
+                        {% if charity.link %}
+                            <a target="_blank" href="{{ charity.link }}" class="btn btn-secondary mt-2">
+                                {{ "shirtcharity.chairman.buttonGoToWebPage"|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

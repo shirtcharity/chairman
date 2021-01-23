@@ -1,0 +1,50 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/tabs.html.twig' %}
+
+{% set charity = page.product.extensions.charities|first %}
+
+{% block page_product_detail_tabs_navigation_review %}
+    {{ parent() }}
+    {% if charity %}
+        <li class="nav-item">
+            <a
+                class="nav-link product-detail-tab-navigation-link"
+                id="charity-tab"
+                data-toggle="tab"
+                data-offcanvas-tabs="true"
+                href="#charity-tab-pane"
+                role="tab"
+                aria-controls="charity-tab-pane"
+                aria-selected="true"
+            >
+                {{ charity.translated.name }}
+                <span class="product-detail-tab-navigation-icon">
+                    {% sw_icon 'arrow-medium-right' style {'pack':'solid'} %}
+                </span>
+                {% if charity.translated.description|length > 0 %}
+                    <span class="product-detail-tab-preview">
+                        {{ charity.translated.description|raw|striptags|sw_sanitize|u.truncate(125, '…') }}
+                        {% if charity.translated.description|length >= 126 %}
+                            <span class="product-detail-tab-preview-more">
+                                {{ "detail.tabsPreviewMore"|trans|sw_sanitize }}
+                            </span>
+                        {% endif %}
+                    </span>
+                {% endif %}
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{% block page_product_detail_tabs_content_review %}
+    {{ parent() }}
+    {% if charity %}
+        <div
+            class="tab-pane fade show"
+            id="charity-tab-pane"
+            role="tabpanel"
+            aria-labelledby="charity-tab"
+        >
+            {% sw_include '@Storefront/storefront/page/product-detail/charity.html.twig' with {'charity': charity} %}
+        </div>
+    {% endif %}
+{% endblock %}
