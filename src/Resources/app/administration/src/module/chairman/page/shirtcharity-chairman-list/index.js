@@ -55,7 +55,7 @@ Component.register('shirtcharity-chairman-list', {
 
         charityCriteria() {
             const criteria = new Criteria();
-            const params = this.getListingParams();
+            const params = this.getMainListingParams();
 
             params.sortBy = params.sortBy || 'name';
             params.sortDirection = params.sortDirection || 'ASC';

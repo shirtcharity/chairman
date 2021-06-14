@@ -63,6 +63,7 @@ Module.register('shirtcharity-chairman', {
         color: '#cadd6c',
         path: 'shirtcharity.chairman.list',
         icon: 'default-basic-shape-heart',
-        position: 45
+        position: 10,
+        parent: 'sw-catalogue'
     }]
 });

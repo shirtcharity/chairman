@@ -17,12 +17,16 @@
   "extra": {
     "shopware-plugin-class": "ShirtCharity\\Chairman\\Chairman",
     "label": {
-      "de-DE": "Chairman (shirt.charity Charity Manager)",
-      "en-GB": "Chairman (shirt.charity Charity Manager)"
+      "de-DE": "shirt.charity Chairman",
+      "en-GB": "shirt.charity Chairman"
+    },
+    "description": {
+      "de-DE": "shirt.charity Charity Manager",
+      "en-GB": "shirt.charity Charity Manager"
     }
   },
   "scripts": {
-    "ecs": "../../../dev-ops/analyze/vendor/bin/ecs --config ../../../platform/easy-coding-standard.yml check ./src/",
+    "ecs": "../../../dev-ops/analyze/vendor/bin/ecs --config ../../../platform/easy-coding-standard.php check ./src/",
     "eslint": "../../../vendor/shopware/platform/src/Administration/Resources/app/administration/node_modules/.bin/eslint --config ../../../vendor/shopware/platform/src/Administration/Resources/app/administration/.eslintrc.js --ext .js,.vue ./src/"
   }
 }

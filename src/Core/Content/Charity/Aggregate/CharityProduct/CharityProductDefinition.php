@@ -15,9 +15,11 @@ use Shopware\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 
 class CharityProductDefinition extends MappingEntityDefinition
 {
+    public const ENTITY_NAME = 'shirtcharity_charity_product';
+
     public function getEntityName(): string
     {
-        return 'shirtcharity_charity_product';
+        return self::ENTITY_NAME;
     }
 
     protected function defineFields(): FieldCollection
