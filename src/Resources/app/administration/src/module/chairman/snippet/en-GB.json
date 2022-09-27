@@ -6,11 +6,11 @@
     },
     "sw-product": {
         "basicForm": {
-            "labelCharity": "Charity",
-            "placeholderCharity": "Enter charity..."
+            "labelCharities": "Charity",
+            "placeholderCharities": "Enter charity..."
         },
         "list": {
-            "columnCharity": "Charity"
+            "columnCharities": "Charity"
         }
     },
     "shirtcharity-chairman": {
@@ -43,12 +43,14 @@
             "fields": {
                 "name": "Name",
                 "link": "Web Page",
+                "categoryLink": "Category Link",
                 "logo": "Logo",
                 "description": "Description"
             },
             "placeholders": {
                 "name": "Enter charity name ...",
                 "link": "Enter charity URL ...",
+                "categoryLink": "Enter category URL ...",
                 "description": "Enter description ..."
             }
         }

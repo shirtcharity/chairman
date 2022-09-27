@@ -30,6 +30,11 @@ class CharityEntity extends Entity
     /**
      * @var string|null
      */
+    protected $categoryLink;
+
+    /**
+     * @var string|null
+     */
     protected $logoId;
 
     /**
@@ -80,6 +85,16 @@ class CharityEntity extends Entity
     public function setLink(?string $link): void
     {
         $this->link = $link;
+    }
+
+    public function getCategoryLink(): ?string
+    {
+        return $this->categoryLink;
+    }
+
+    public function setCategoryLink(?string $categoryLink): void
+    {
+        $this->categoryLink = $categoryLink;
     }
 
     public function getLogoId(): ?string

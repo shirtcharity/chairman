@@ -1,0 +1,63 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body %}
+{% set charities = page.product.extensions.charities %}
+{% set charity = null %}
+{% if charities %}
+    {% if charities|length == 1 %}
+        {% set charity = charities|first %}
+    {% else %}
+        {% set referer = app.request.headers.get('referer') %}
+        {% if referer %}
+            {% for c in charities %}
+                {% if (c.categoryLink in referer) or (referer in c.categoryLink) %}
+                    {% set charity = c %}
+                    {{ app.session.set('saved_referer', referer) }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% if not charity %}
+            {% set referer = app.session.get('saved_referer') %}
+            {% if referer %}
+                {% for c in charities %}
+                    {% if (c.categoryLink in referer) or (referer in c.categoryLink) %}
+                        {% set charity = c %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}
+{{ parent() }}
+{% endblock %}
+
+{% block base_breadcrumb %}
+{% if charity and charity.categoryLink %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li
+            class="breadcrumb-item"
+            aria-current="page"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+        >
+
+            <a
+                href="{{ charity.categoryLink }}"
+                class="breadcrumb-link is-active"
+                title="{{ charity.translated.name }}"
+                itemprop="item"
+            >
+                <link itemprop="url" href="{{ charity.categoryLink }}"/>
+                <span class="breadcrumb-title" itemprop="name">{{ charity.translated.name }}</span>
+            </a>
+            <meta itemprop="position" content="1"/>
+        </li>
+    </ol>
+</nav>
+{% elseif charities %}
+{% else %}
+{{ parent() }}
+{% endif %}
+{% endblock %}

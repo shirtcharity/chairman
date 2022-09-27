@@ -12,9 +12,9 @@
 
                 {% block page_product_detail_charity_content_buttons %}
                     <div class="product-detail-charity-buttons mt-3">
-                        {% if page.product.seoCategory %}
+                        {% if charity.categoryLink %}
                             <a
-                                href="{{ seoUrl('frontend.navigation.page', { navigationId: page.product.seoCategory.id }) }}"
+                                href="{{ charity.categoryLink }}"
                                 class="btn btn-primary mt-2 mr-2"
                             >
                                 {{ 'shirtcharity.chairman.buttonShowAll'|trans({ '%charity%': charity.translated.name }) }}

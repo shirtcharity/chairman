@@ -17,9 +17,9 @@ Component.override('sw-product-list', {
         productColumns() {
             const columns = this.getProductColumns();
             columns.splice(1, 0, {
-                property: 'extensions.charities.last().translated.name',
+                property: 'extensions.charities.length()',
                 dataIndex: 'extensions.charities.name',
-                label: this.$tc('sw-product.list.columnCharity'),
+                label: this.$tc('sw-product.list.columnCharities'),
                 allowResize: true
             });
             return columns;

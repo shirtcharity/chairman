@@ -4,7 +4,7 @@
         v-model="product.extensions.charities"
         :inheritedValue="parentProduct.extensions ? parentProduct.extensions.charities : null"
         :hasParent="!!parentProduct.id"
-        :label="$tc('sw-product.basicForm.labelCharity')"
+        :label="$tc('sw-product.basicForm.labelCharities')"
         isAssociation
         @inheritance-remove="saveProduct"
         @inheritance-restore="saveProduct"
@@ -12,11 +12,11 @@
         <template #content="{ currentValue, updateCurrentValue, isInherited }">
             <sw-entity-many-to-many-select
                 :localMode="product.isNew()"
-                :entityCollection="limitValues(currentValue)"
+                :entityCollection="limitValues(currentValue, null)"
                 :disabled="isInherited"
                 :key="isInherited"
-                :placeholder="$tc('sw-product.basicForm.placeholderCharity')"
-                @change="updateCurrentValue(limitValues($event))"
+                :placeholder="$tc('sw-product.basicForm.placeholderCharities')"
+                @change="updateCurrentValue(limitValues($event, null))"
                 labelProperty="name"
                 class="sw-select-product__select_charity"
             >

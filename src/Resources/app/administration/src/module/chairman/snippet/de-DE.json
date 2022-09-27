@@ -6,11 +6,11 @@
     },
     "sw-product": {
         "basicForm": {
-            "labelCharity": "Charity",
-            "placeholderCharity": "Gib eine Charity ein ..."
+            "labelCharities": "Charities",
+            "placeholderCharities": "Gib Charities ein ..."
         },
         "list": {
-            "columnCharity": "Charity"
+            "columnCharities": "Charities"
         }
     },
     "shirtcharity-chairman": {
@@ -43,12 +43,14 @@
             "fields": {
                 "name": "Name",
                 "link": "Webseite",
+                "categoryLink": "Kategorie-Link",
                 "logo": "Logo",
                 "description": "Beschreibung"
             },
             "placeholders": {
                 "name": "Gib den Namen der Charity ein ...",
                 "link": "Gib die URL der Charity-Website ein ...",
+                "categoryLink": "Gib die URL der Kategorie hier im Shop ein ...",
                 "description": "Gib die Beschreibung der Charity ein ..."
             }
         }

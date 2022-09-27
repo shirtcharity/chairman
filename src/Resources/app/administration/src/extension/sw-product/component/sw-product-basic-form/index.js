@@ -21,6 +21,9 @@ Component.override('sw-product-basic-form', {
             }
         },
         limitValues(values, limit = 1) {
+            if (!limit) {
+                return values;
+            }
             return values.filter((_v, i) => i >= values.length - limit);
         }
     }

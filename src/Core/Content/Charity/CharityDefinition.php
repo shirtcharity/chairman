@@ -46,6 +46,7 @@ class CharityDefinition extends EntityDefinition
             (new TranslatedField('name'))->addFlags(new SearchRanking(SearchRanking::HIGH_SEARCH_RANKING)),
             new TranslatedField('description'),
             new StringField('link', 'link'),
+            new StringField('category_link', 'categoryLink'),
             new FkField('logo_id', 'logoId', MediaDefinition::class),
             new ManyToOneAssociationField('logo', 'logo_id', MediaDefinition::class, 'id', false),
             (new ManyToManyAssociationField(

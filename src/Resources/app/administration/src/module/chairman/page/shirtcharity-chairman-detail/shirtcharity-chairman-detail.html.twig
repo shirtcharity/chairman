@@ -92,6 +92,17 @@
                                         >
                                         </sw-field>
                                     {% endblock %}
+
+                                    {% block shirtcharity_chairman_detail_base_info_field_category_link %}
+                                        <sw-field
+                                            v-model="charity.categoryLink"
+                                            :label="$tc('shirtcharity-chairman.detail.fields.categoryLink')"
+                                            :placeholder="$tc('shirtcharity-chairman.detail.placeholders.categoryLink')"
+                                            type="text"
+                                            name="categoryLink"
+                                        >
+                                        </sw-field>
+                                    {% endblock %}
                                 </div>
 
                                 {% block shirtcharity_chairman_detail_logo_upload %}
